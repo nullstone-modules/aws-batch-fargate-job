@@ -2,14 +2,12 @@ resource "aws_batch_job_definition" "this" {
   name = local.resource_name
   type = "container"
 
-  platform_capabilities = [
-    "FARGATE",
-  ]
+  platform_capabilities = ["FARGATE"]
 
   container_properties = jsonencode({
     command    = local.command
     image      = "${local.service_image}:${local.app_version}"
-    jobRoleArn = "arn:aws:iam::123456789012:role/AWSBatchS3ReadOnly"
+    jobRoleArn = aws_iam_role.task.arn
 
     fargatePlatformConfiguration = {
       platformVersion = "LATEST"
@@ -38,4 +36,22 @@ resource "aws_batch_job_definition" "this" {
 locals {
   command             = length(var.command) > 0 ? var.command : null
   main_container_name = "main"
+}
+
+
+resource "aws_iam_role" "task" {
+  name               = "task-${local.resource_name}"
+  assume_role_policy = data.aws_iam_policy_document.task_assume.json
+}
+
+data "aws_iam_policy_document" "task_assume" {
+  statement {
+    effect  = "Allow"
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["ecs-tasks.amazonaws.com"]
+    }
+  }
 }
