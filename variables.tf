@@ -1,11 +1,11 @@
 variable "cpu" {
-  type    = string
-  default = "1"
+  type    = number
+  default = 0.25
 }
 
 variable "memory" {
   type    = number
-  default = 2048
+  default = 256
 }
 
 variable "image" {
