@@ -10,6 +10,10 @@ locals {
 
 locals {
   app_metadata = tomap({
-    // Inject app metadata into capabilities here (e.g. security_group_name, role_name)
+    // Inject app metadata into capabilities here (e.g. security_group_id, role_name)
+    role_name            = aws_iam_role.task.name
+    main_container       = local.main_container_name
+    log_group_name       = module.logs.name
+    launch_type          = "FARGATE"
   })
 }
