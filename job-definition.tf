@@ -16,11 +16,11 @@ resource "aws_batch_job_definition" "this" {
     resourceRequirements = [
       {
         type  = "VCPU"
-        value = var.cpu
+        value = tostring(var.cpu)
       },
       {
         type  = "MEMORY"
-        value = var.memory
+        value = tostring(var.memory)
       }
     ]
 

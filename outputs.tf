@@ -19,3 +19,19 @@ output "image_pusher" {
 
   sensitive = true
 }
+
+output "log_provider" {
+  value       = local.log_provider
+  description = "string ||| "
+}
+
+output "log_group_name" {
+  value       = module.logs.name
+  description = "string ||| "
+}
+
+output "log_reader" {
+  value       = module.logs.reader
+  description = "object({ name: string, access_key: string, secret_key: string }) ||| An AWS User with explicit privilege to read logs from Cloudwatch."
+  sensitive   = true
+}
