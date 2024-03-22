@@ -1,3 +1,18 @@
+output "region" {
+  value       = data.aws_region.this.name
+  description = "string ||| "
+}
+
+output "job_definition_name" {
+  value       = aws_batch_job_definition.this.name
+  description = "string ||| "
+}
+
+output "job_definition_arn" {
+  value       = aws_batch_job_definition.this.arn
+  description = "string ||| "
+}
+
 output "image_repo_name" {
   value       = try(aws_ecr_repository.this[0].name, "")
   description = "string ||| "
@@ -34,4 +49,16 @@ output "log_reader" {
   value       = module.logs.reader
   description = "object({ name: string, access_key: string, secret_key: string }) ||| An AWS User with explicit privilege to read logs from Cloudwatch."
   sensitive   = true
+}
+
+output "deployer" {
+  value = {
+    name       = aws_iam_user.deployer.name
+    access_key = aws_iam_access_key.deployer.id
+    secret_key = aws_iam_access_key.deployer.secret
+  }
+
+  description = "object({ name: string, access_key: string, secret_key: string }) ||| An AWS User with explicit privilege to deploy ECS services."
+
+  sensitive = true
 }

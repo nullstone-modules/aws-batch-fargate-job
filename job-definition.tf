@@ -34,10 +34,8 @@ resource "aws_batch_job_definition" "this" {
 }
 
 locals {
-  command             = length(var.command) > 0 ? var.command : null
-  main_container_name = "main"
+  command = length(var.command) > 0 ? var.command : null
 }
-
 
 resource "aws_iam_role" "task" {
   name               = "task-${local.resource_name}"
