@@ -25,8 +25,6 @@ locals {
     NULLSTONE_ENV           = data.ns_workspace.this.env_name
     NULLSTONE_VERSION       = data.ns_app_env.this.version
     NULLSTONE_COMMIT_SHA    = data.ns_app_env.this.commit_sha
-    NULLSTONE_PUBLIC_HOSTS  = []
-    NULLSTONE_PRIVATE_HOSTS = []
   })
 
   input_env_vars = merge(local.standard_env_vars, local.cap_env_vars, var.env_vars)
