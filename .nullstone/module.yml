@@ -6,7 +6,7 @@ category: app
 subcategory: container
 provider_types:
     - aws
-platform: ecs
+platform: batch
 subplatform: fargate
 type: ""
 appCategories: []
