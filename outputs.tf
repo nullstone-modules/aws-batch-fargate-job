@@ -9,7 +9,7 @@ output "job_definition_name" {
 }
 
 output "job_definition_arn" {
-  value       = aws_batch_job_definition.this.arn
+  value       = aws_batch_job_definition.this.arn_prefix
   description = "string ||| "
 }
 
