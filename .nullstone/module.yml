@@ -1,0 +1,13 @@
+org_name: nullstone
+name: aws-batch-fargate-job
+friendly_name: Fargate Job Definition for AWS Batch
+description: Produces a job definition for AWS Batch using a container on Fargate
+category: app
+subcategory: container
+provider_types:
+    - aws
+platform: batch
+subplatform: fargate
+type: ""
+appCategories: []
+is_public: true
