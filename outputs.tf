@@ -1,5 +1,5 @@
 output "region" {
-  value       = data.aws_region.this.name
+  value       = data.aws_region.this.region
   description = "string ||| "
 }
 
@@ -61,4 +61,14 @@ output "deployer" {
   description = "object({ name: string, access_key: string, secret_key: string }) ||| An AWS User with explicit privilege to deploy ECS services."
 
   sensitive = true
+}
+
+output "private_urls" {
+  value       = local.private_urls
+  description = "list(string) ||| A list of URLs only accessible inside the network"
+}
+
+output "public_urls" {
+  value       = local.public_urls
+  description = "list(string) ||| A list of URLs accessible to the public"
 }
