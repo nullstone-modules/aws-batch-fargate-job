@@ -4,6 +4,9 @@ resource "aws_batch_job_definition" "this" {
 
   platform_capabilities = ["FARGATE"]
 
+  // Copy the job definition tags (provider default_tags) onto the ECS tasks Batch launches.
+  propagate_tags = true
+
   container_properties = jsonencode({
     command    = local.command
     image      = "${local.service_image}:${local.app_version}"

@@ -1,3 +1,6 @@
+# 0.2.1 (Sep 21, 2026)
+* Set `propagate_tags = true` on the job definition so the Fargate tasks Batch launches carry the workspace tags.
+
 # 0.2.0 (Jun 19, 2026)
 * Upgraded `nullstone-io/ns` provider to `~> 0.11.0`.
 * Used `aws_tags` from `data.ns_workspace` to tag all resources via provider `default_tags`.
