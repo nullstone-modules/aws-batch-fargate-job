@@ -1,3 +1,9 @@
+# 0.3.0 (Oct 2, 2026)
+* Upgraded `nullstone-io/ns` provider to `~> 0.13.0`.
+* Replaced `ns_env_variables` and `ns_secret_keys` with the layered `ns_env_layout`, `ns_env_values`, and `ns_env_platform_data` data sources to aggregate environment variables and secrets.
+* Emitted the `env` platform data record, including the source of each variable and the Secrets Manager ARN of each managed secret.
+* Upgraded capability scaffolding to emit `capability` on capability env vars and secrets and `cap_prefixes`.
+
 # 0.2.1 (Sep 21, 2026)
 * Set `propagate_tags = true` on the job definition so the Fargate tasks Batch launches carry the workspace tags.
 

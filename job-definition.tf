@@ -27,7 +27,7 @@ resource "aws_batch_job_definition" "this" {
       }
     ]
 
-    environment = [for k, v in local.all_env_vars : { name = k, value = v }]
+    environment = [for k, v in data.ns_env_values.this.env_variables : { name = k, value = v }]
     secrets     = local.all_secret_refs
 
     logConfiguration = local.log_configuration
