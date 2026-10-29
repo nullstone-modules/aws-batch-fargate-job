@@ -1,9 +1,9 @@
 module "logs" {
-  source = "nullstone-modules/logs/aws"
+  source  = "nullstone-modules/logs/aws"
+  version = "~> 0.3.0"
 
   name              = local.resource_name
   tags              = local.tags
-  enable_log_reader = true
   retention_in_days = 90
   kms_key_arn       = aws_kms_alias.this.arn
 }
